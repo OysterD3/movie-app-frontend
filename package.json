@@ -32,6 +32,7 @@
     "@nuxtjs/eslint-module": "1.2.0",
     "@nuxtjs/stylelint-module": "3.2.2",
     "@nuxtjs/vuetify": "1.11.2",
+    "@types/swiper": "^5.3.0",
     "@vue/test-utils": "1.0.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",

@@ -1,4 +1,4 @@
-const colors = require("vuetify/es5/util/colors").default
+const colors = require("vuetify/es5/util/colors").default;
 
 module.exports = {
   mode: "spa",
@@ -30,7 +30,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [{ src: "@/plugins/vue-awesome-swiper.ts", mode: "client" }],
   /*
    ** Nuxt.js dev-modules
    */
@@ -85,8 +85,8 @@ module.exports = {
     extend(config, ctx) {},
     babel: {
       presets({ isServer }) {
-        return [["@nuxt/babel-preset-app", { loose: true }]]
+        return [["@nuxt/babel-preset-app", { loose: true }]];
       }
     }
   }
-}
+};

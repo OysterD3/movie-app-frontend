@@ -1,4 +1,10 @@
-<template></template>
+<template>
+  <v-app>
+    <v-content>
+      <nuxt />
+    </v-content>
+  </v-app>
+</template>
 
 <script lang="ts">
 import { Vue, Component } from "nuxt-property-decorator"

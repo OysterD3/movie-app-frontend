@@ -6,7 +6,6 @@ module.exports = {
   },
   extends: [
     "plugin:nuxt/recommended",
-    "airbnb-base",
     "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint"
@@ -27,6 +26,12 @@ module.exports = {
     "@typescript-eslint/no-explicit-any": "off",
     "no-restricted-globals": "off",
     "nuxt/no-cjs-in-config": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "@typescript-eslint/interface-name-prefix": [
+      "error",
+      {
+        "prefixWithI": "always"
+      }
+    ]
   }
 }

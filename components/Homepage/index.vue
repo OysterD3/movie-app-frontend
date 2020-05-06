@@ -2,6 +2,7 @@
   <div>
     <Slider :images="images" />
     <LatestList heading="Latest Movies" />
+    <LatestList heading="Latest TVs" tv />
   </div>
 </template>
 

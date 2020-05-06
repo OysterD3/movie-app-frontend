@@ -36,7 +36,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "nuxt-property-decorator";
 import { IGenres } from "~/types/genres.interface";
-import { MOVIE_GENRES } from "~/constants/genres.constant";
+import { MOVIE_GENRES, TV_GENRES } from "~/constants/genres.constant";
 import moment from "moment";
 import {
   IDiscoverMovie,
@@ -86,7 +86,7 @@ export default class LatestList extends Vue {
   }
 
   get genres(): IGenres[] {
-    return MOVIE_GENRES.slice(0, 7);
+    return this.tv ? TV_GENRES.slice(0, 7) : MOVIE_GENRES.slice(0, 7);
   }
 }
 </script>

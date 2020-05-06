@@ -22,7 +22,7 @@ export default class Slider extends Vue {
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: "auto",
-    overflowEffect: {
+    coverflowEffect: {
       rotate: 50,
       stretch: 0,
       depth: 100,
@@ -32,28 +32,9 @@ export default class Slider extends Vue {
     pagination: {
       el: ".swiper-pagination"
     },
-    loop: true,
     autoplay: {
       delay: 4500,
       disableOnInteraction: false
-    },
-    on: {
-      slideChange() {
-        // @ts-ignore
-        if (this.isEnd) {
-          // @ts-ignore
-          this.loopDestroy();
-          // @ts-ignore
-          this.loopCreate();
-        }
-        // @ts-ignore
-        if (this.isBeginning) {
-          // @ts-ignore
-          this.loopDestroy();
-          // @ts-ignore
-          this.loopCreate();
-        }
-      }
     }
   };
 }
@@ -73,7 +54,7 @@ export default class Slider extends Vue {
     height: 450px;
     text-align: center;
     font-weight: bold;
-    background-color: #2c8dfb;
+    background-color: #000;
     background-position: center;
     background-size: cover;
     color: #fff;

@@ -1,5 +1,8 @@
 <template>
-  <Slider :images="images" />
+  <div>
+    <Slider :images="images" />
+    <LatestList heading="Latest Movies" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -7,10 +10,12 @@ import { Vue, Component } from "nuxt-property-decorator";
 import Slider from "@/components/Homepage/Slider.vue";
 import { IDiscoverMovie } from "@/types/discover-movie.interface";
 import { BASE_URL } from "~/constants/tmdb-image.constant";
+import LatestList from "~/components/Homepage/LatestList.vue";
 
 @Component({
   name: "HomepageIndex",
   components: {
+    LatestList,
     Slider
   }
 })

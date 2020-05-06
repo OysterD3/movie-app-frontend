@@ -1,8 +1,11 @@
 <template>
   <div class="mt-3">
     <swiper class="swiper" :options="swiperOption">
-      <swiper-slide v-for="el in images" :key="el">
-        <v-img :src="el" />
+      <swiper-slide v-for="el in images" :key="el.id">
+        <v-img
+          :src="el.link"
+          @click="$router.push({ name: 'voddetail-id', params: { id: el.id } })"
+        />
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
@@ -16,7 +19,10 @@ import { Vue, Component, Prop } from "nuxt-property-decorator";
   name: "Slider"
 })
 export default class Slider extends Vue {
-  @Prop({ required: true, type: Array }) readonly images!: string[];
+  @Prop({ required: true, type: Object }) readonly images!: {
+    link: string;
+    id: number;
+  }[];
   swiperOption = {
     effect: "coverflow",
     grabCursor: true,

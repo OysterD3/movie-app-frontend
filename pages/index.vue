@@ -1,12 +1,18 @@
-<template></template>
+<template>
+  <Homepage />
+</template>
 
 <script lang="ts">
-import { Vue, Component } from "nuxt-property-decorator"
+import { Vue, Component } from "nuxt-property-decorator";
+import Homepage from "@/components/Homepage/index.vue";
 
 @Component({
-  name: "Homepage"
+  name: "Home",
+  components: {
+    Homepage
+  }
 })
-export default class Homepage extends Vue {}
+export default class Home extends Vue {}
 </script>
 
 <style scope></style>

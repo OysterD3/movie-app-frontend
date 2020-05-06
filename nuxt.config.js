@@ -30,7 +30,10 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: "@/plugins/vue-awesome-swiper.ts", mode: "client" }],
+  plugins: [
+    { src: "@/plugins/vue-awesome-swiper.ts", mode: "client" },
+    { src: "@/plugins/axios.ts" }
+  ],
   /*
    ** Nuxt.js dev-modules
    */

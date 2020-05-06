@@ -32,6 +32,7 @@ module.exports = {
       {
         "prefixWithI": "always"
       }
-    ]
+    ],
+    quotes: ["error", "double", { "allowTemplateLiterals": true }]
   }
 }

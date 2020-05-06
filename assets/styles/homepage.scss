@@ -1,0 +1,16 @@
+.oys-genres-tab {
+  display: inline;
+
+  li {
+    display: inline;
+  }
+
+  &-splitter {
+    background-color: white;
+    display: inline-block;
+    margin: 0 12px;
+    width: 1px;
+    height: 16px;
+    vertical-align: -2px;
+  }
+}

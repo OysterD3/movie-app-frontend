@@ -26,7 +26,7 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [{ src: "@/assets/styles/index.scss" }],
   /*
    ** Plugins to load before mounting the App
    */
@@ -34,10 +34,7 @@ module.exports = {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: [
-    "@nuxt/typescript-build",
-    "@nuxtjs/vuetify"
-  ],
+  buildModules: ["@nuxt/typescript-build", "@nuxtjs/vuetify"],
   /*
    ** Nuxt.js modules
    */

@@ -33,6 +33,7 @@ module.exports = {
         "prefixWithI": "always"
       }
     ],
-    quotes: ["error", "double", { "allowTemplateLiterals": true }]
+    quotes: ["error", "double", { "allowTemplateLiterals": true }],
+    "@typescript-eslint/camelcase": "off"
   }
 }

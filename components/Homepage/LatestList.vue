@@ -1,17 +1,8 @@
 <template>
   <section class="mx-2">
     <div class="my-10">
-      <h3
-        style="
-          width: 100%;
-          border-bottom: 1px solid #fff;
-          line-height: 0.1em;
-          margin: 10px 0 20px;
-        "
-      >
-        <span style="background: #000; padding: 0 10px;">
-          {{ heading }}
-        </span>
+      <h3 class="oys-heading over-line">
+        {{ heading }}
       </h3>
     </div>
     <div class="text-right mb-3">
@@ -91,4 +82,18 @@ export default class LatestList extends Vue {
 }
 </script>
 
-<style scoped></style>
+<style lang="scss">
+.oys-heading {
+  &.over-line {
+    display: flex;
+    align-items: center;
+    &:after {
+      content: "";
+      margin-left: 0.5rem;
+      background: #fff;
+      height: 2px;
+      flex: 1;
+    }
+  }
+}
+</style>

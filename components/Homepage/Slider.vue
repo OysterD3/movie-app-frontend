@@ -4,6 +4,7 @@
       <swiper-slide v-for="el in images" :key="el.id">
         <v-img
           :src="el.link"
+          style="border-radius: 16px;"
           @click="$router.push({ name: 'voddetail-id', params: { id: el.id } })"
         />
       </swiper-slide>
@@ -29,8 +30,8 @@ export default class Slider extends Vue {
     centeredSlides: true,
     slidesPerView: "auto",
     coverflowEffect: {
-      rotate: 50,
-      stretch: 0,
+      rotate: 0,
+      stretch: -50,
       depth: 100,
       modifier: 1,
       slideShadows: true
@@ -39,7 +40,7 @@ export default class Slider extends Vue {
       el: ".swiper-pagination"
     },
     autoplay: {
-      delay: 4500,
+      delay: 3500,
       disableOnInteraction: false
     }
   };
@@ -60,7 +61,6 @@ export default class Slider extends Vue {
     height: 450px;
     text-align: center;
     font-weight: bold;
-    background-color: #000;
     background-position: center;
     background-size: cover;
     color: #fff;

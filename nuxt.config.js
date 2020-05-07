@@ -22,7 +22,11 @@ module.exports = {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: "#fff" },
+  loadingIndicator: {
+    color: "#fff",
+    name: "folding-cube",
+    background: "linear-gradient(#0e1a3f, #0b1123)"
+  },
   /*
    ** Global CSS
    */

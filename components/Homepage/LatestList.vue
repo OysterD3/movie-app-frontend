@@ -22,7 +22,7 @@
         v-for="el in data"
         :key="el.id"
         @click="$router.push({ name: 'voddetail-id', params: { id: el.id } })"
-        style="cursor: pointer;"
+        style="cursor: pointer; position: relative;"
       >
         <v-hover v-slot:default="{ hover }">
           <v-img class="oys-border-radius" :src="el.poster_path">
@@ -37,6 +37,20 @@
             </v-expand-transition>
           </v-img>
         </v-hover>
+        <div
+          :class="{
+            'movie-rating': true,
+            'py-1': true,
+            'text-center': true,
+            'oys-border-radius': true,
+            success: el.vote_average >= 7.5,
+            warning: el.vote_average >= 5 && el.vote_average < 7.5,
+            error: el.vote_average >= 0 && el.vote_average < 5,
+            'darken-2': true
+          }"
+        >
+          {{ el.vote_average }}
+        </div>
       </v-col>
     </v-row>
   </section>
@@ -113,5 +127,13 @@ export default class LatestList extends Vue {
       flex: 1;
     }
   }
+}
+
+.movie-rating {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
 }
 </style>

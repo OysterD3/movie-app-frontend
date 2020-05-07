@@ -4,7 +4,7 @@
       <swiper-slide v-for="el in images" :key="el.id">
         <v-img
           :src="el.link"
-          style="border-radius: 16px;"
+          class="oys-border-radius"
           @click="$router.push({ name: 'voddetail-id', params: { id: el.id } })"
         />
       </swiper-slide>

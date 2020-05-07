@@ -18,7 +18,7 @@
     </div>
     <v-row>
       <v-col cols="2" v-for="el in data" :key="el.id">
-        <v-img :src="el.poster_path" />
+        <v-img class="oys-border-radius" :src="el.poster_path" />
       </v-col>
     </v-row>
   </section>

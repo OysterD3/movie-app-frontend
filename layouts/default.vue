@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app id="oyster-app">
     <Snackbar />
     <v-content class="oys-container">
       <nuxt />
@@ -18,4 +18,8 @@ import Snackbar from "~/components/Snackbar.vue";
 export default class DefaultLayout extends Vue {}
 </script>
 
-<style scope></style>
+<style scoped>
+#oyster-app {
+  background: linear-gradient(#0e1a3f, #0b1123);
+}
+</style>

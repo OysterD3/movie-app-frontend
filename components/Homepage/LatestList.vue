@@ -9,10 +9,10 @@
       <ul class="oys-genres-tab">
         <li v-for="(el, idx) in genres">
           <div class="d-inline-block">{{ el.name }}</div>
-          <span
-            class="oys-genres-tab-splitter"
-            v-if="idx !== genres.length - 1"
-          ></span>
+          <span class="oys-genres-tab-splitter"></span>
+        </li>
+        <li>
+          <div class="d-inline-block">See more >></div>
         </li>
       </ul>
     </div>

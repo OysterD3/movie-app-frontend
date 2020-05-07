@@ -7,7 +7,12 @@
     }"
     :class="{ 'oys-details-background': heroImage }"
   >
-    <DetailsHeader />
+    <DetailsHeader
+      :title="details.title"
+      :status="details.status"
+      :runtime="details.runtime"
+      :release-date="details.release_date"
+    />
   </div>
 </template>
 

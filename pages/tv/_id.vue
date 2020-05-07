@@ -1,12 +1,14 @@
-<template></template>
+<template>
+  <div></div>
+</template>
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
 
 @Component({
-  name: "_id"
+  name: "TvID"
 })
-export default class _id extends Vue {}
+export default class TvID extends Vue {}
 </script>
 
 <style scoped></style>

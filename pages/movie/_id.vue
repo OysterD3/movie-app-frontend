@@ -1,12 +1,16 @@
-<template></template>
+<template>
+  <DetailsIndex :details="movie" />
+</template>
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
 import { Context } from "@nuxt/types";
 import { IMovieDetails } from "~/types/movie.interface";
+import DetailsIndex from "~/components/Details/index.vue";
 
 @Component({
-  name: "VodDetailID",
+  name: "MovieID",
+  components: { DetailsIndex },
   async asyncData({
     $axios,
     params
@@ -17,7 +21,7 @@ import { IMovieDetails } from "~/types/movie.interface";
     return { movie };
   }
 })
-export default class VodDetailID extends Vue {}
+export default class MovieID extends Vue {}
 </script>
 
 <style scoped></style>

@@ -1,7 +1,7 @@
 <template>
   <v-app id="oyster-app">
     <Snackbar />
-    <v-content class="oys-container">
+    <v-content>
       <nuxt />
     </v-content>
     <v-divider class="mt-3" />

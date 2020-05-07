@@ -20,7 +20,7 @@ import { Vue, Component, Prop } from "nuxt-property-decorator";
   name: "Slider"
 })
 export default class Slider extends Vue {
-  @Prop({ required: true, type: Object }) readonly images!: {
+  @Prop({ required: true, type: Array }) readonly images!: {
     link: string;
     id: number;
   }[];

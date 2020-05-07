@@ -5,7 +5,7 @@
         <v-img
           :src="el.link"
           class="oys-border-radius"
-          @click="$router.push({ name: 'voddetail-id', params: { id: el.id } })"
+          @click="$router.push({ name: 'movie-id', params: { id: el.id } })"
         />
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>

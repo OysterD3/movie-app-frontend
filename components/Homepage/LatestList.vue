@@ -21,7 +21,11 @@
         cols="2"
         v-for="el in data"
         :key="el.id"
-        @click="$router.push({ name: 'voddetail-id', params: { id: el.id } })"
+        @click="
+          tv
+            ? $router.push({ name: 'tv-id', params: { id: el.id } })
+            : $router.push({ name: 'movie-id', params: { id: el.id } })
+        "
         style="cursor: pointer; position: relative;"
       >
         <v-hover v-slot:default="{ hover }">

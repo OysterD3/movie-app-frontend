@@ -17,8 +17,26 @@
       </ul>
     </div>
     <v-row>
-      <v-col cols="2" v-for="el in data" :key="el.id">
-        <v-img class="oys-border-radius" :src="el.poster_path" />
+      <v-col
+        cols="2"
+        v-for="el in data"
+        :key="el.id"
+        @click="$router.push({ name: 'voddetail-id', params: { id: el.id } })"
+        style="cursor: pointer;"
+      >
+        <v-hover v-slot:default="{ hover }">
+          <v-img class="oys-border-radius" :src="el.poster_path">
+            <v-expand-transition>
+              <div
+                v-if="hover"
+                style="height: 100%; background-color: #0e1a3f; opacity: 0.8;"
+                class="d-flex justify-center align-center white--text text-center pa-3"
+              >
+                {{ tv ? el.name : el.title }}
+              </div>
+            </v-expand-transition>
+          </v-img>
+        </v-hover>
       </v-col>
     </v-row>
   </section>

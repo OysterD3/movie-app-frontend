@@ -96,29 +96,33 @@ export interface ISimilar {
     vote_average: number;
     vote_count: number;
     popularity: number;
-  };
+  }[];
 }
 
 export interface ICredits {
-  cast: {
-    cast_id: number;
-    character: string;
-    credit_id: string;
-    gender: number | null;
-    id: number;
-    name: string;
-    order: number;
-    profile_path: string | null;
-  }[];
-  crew: {
-    credit_id: string;
-    department: string;
-    gender: number | null;
-    id: number;
-    job: string;
-    name: string;
-    profile_path: string | null;
-  }[];
+  cast: ICast[];
+  crew: ICrew[];
+}
+
+export interface ICast {
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  gender: number | null;
+  id: number;
+  name: string;
+  order: number;
+  profile_path: string | null;
+}
+
+export interface ICrew {
+  credit_id: string;
+  department: string;
+  gender: number | null;
+  id: number;
+  job: string;
+  name: string;
+  profile_path: string | null;
 }
 
 export interface IRecommendations {

@@ -12,6 +12,7 @@
       :status="details.status"
       :runtime="details.runtime"
       :release-date="details.release_date"
+      :videos="details.videos"
     />
   </div>
 </template>

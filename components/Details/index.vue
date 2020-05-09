@@ -46,7 +46,7 @@
             </div>
           </v-img>
         </div>
-        <swiper class="swiper pa-4 pr-7" :options="swiperOption">
+        <swiper class="swiper pa-4 pr-7" :options="swiperOption" v-else>
           <swiper-slide v-for="el in recommendation" :key="el.id">
             <v-img
               eager

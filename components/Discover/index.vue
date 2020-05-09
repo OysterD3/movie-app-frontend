@@ -1,12 +1,12 @@
 <template>
   <div>
     <v-row no-gutters class="px-4">
-      <v-col cols="3">
+      <v-col cols="12" md="3">
         <DiscoverSidebar :tv="tv" />
       </v-col>
-      <v-col cols="9">
+      <v-col cols="12" md="9">
         <v-row>
-          <v-col cols="3" v-for="el in discoverSynced" :key="el.id">
+          <v-col cols="6" md="3" v-for="el in discoverSynced" :key="el.id">
             <DiscoverCard
               :title="el.title || el.name"
               :image="el.poster_path"

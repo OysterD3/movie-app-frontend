@@ -18,12 +18,14 @@
     <div class="d-flex no-gutters">
       <div class="col-md-8 col-12 oys-details-cast">
         <DetailsCast tv :cast="details.credits.cast" />
+        <v-divider class="my-4" />
         <TvDetailsCurrentSeason :seasons="details.seasons" />
+        <v-divider class="my-4" />
         <DetailsSimilar :similar="details.similar" />
       </div>
       <div class="col-md-4 px-4 mb-4 col-12">
         <h4 class="display-1 mb-4">Recommendations</h4>
-        <div class="overflow-x-auto recommendation" style="max-height: 550px;">
+        <div class="overflow-x-auto recommendation" style="max-height: 600px;">
           <v-img
             eager
             v-for="el in recommendation"
@@ -86,4 +88,12 @@ export default class TvDetailsIndex extends Vue {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.recommendation::-webkit-scrollbar {
+  display: none;
+}
+
+.recommendation {
+  -ms-overflow-style: none;
+}
+</style>

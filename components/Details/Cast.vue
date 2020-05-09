@@ -3,24 +3,26 @@
     <h4 class="display-1 mx-4 pt-4">Casts</h4>
     <swiper class="swiper pa-4 pr-7" :options="swiperOption">
       <swiper-slide v-for="el in castProfilePic" :key="el.image">
-        <v-img
-          eager
-          :src="el.image"
-          contain
-          class="oys-border-radius oys-shadow"
-          @mouseover="hoverCast(el.image)"
-          @mouseleave="hoverCast('')"
-          style="position: relative;"
-        >
-          <div class="oys-details-cast--act">
-            <div class="font-weight-bold subtitle-2 px-3 pt-3">
-              {{ el.name }}
+        <v-hover v-slot:default="{ hover }">
+          <v-img
+            eager
+            :src="el.image"
+            contain
+            class="oys-border-radius oys-shadow"
+            @mouseover="hoverCast(el.image)"
+            @mouseleave="hoverCast('')"
+            style="position: relative; cursor: pointer;"
+          >
+            <div class="oys-details-cast--act">
+              <div class="font-weight-bold subtitle-2 px-3 pt-3">
+                {{ el.name }}
+              </div>
+              <div class="subtitle-2 font-weight-light px-3">
+                {{ el.character }}
+              </div>
             </div>
-            <div class="subtitle-2 font-weight-light px-3">
-              {{ el.character }}
-            </div>
-          </div>
-        </v-img>
+          </v-img>
+        </v-hover>
       </swiper-slide>
     </swiper>
   </div>

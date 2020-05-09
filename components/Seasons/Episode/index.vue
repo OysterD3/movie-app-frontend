@@ -10,6 +10,19 @@
             Season {{ seasons.season_number }}
             <span class="headline font-weight-regular">({{ year }})</span>
           </h3>
+          <div
+            style="cursor: pointer;"
+            class="mt-2 d-inline-block grey--text"
+            @click="
+              $router.push({
+                name: 'tv-id-season',
+                params: { id: $route.params.id }
+              })
+            "
+          >
+            <v-icon left color="grey">mdi-keyboard-backspace</v-icon>
+            Back to season list
+          </div>
         </v-col>
       </v-row>
     </v-card>

@@ -1,16 +1,16 @@
 <template>
-  <SeasonIndex :seasons="seasons" />
+  <EpisodeCardIndex :seasons="seasons" />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
 import { Context } from "@nuxt/types";
 import { ITvSeasons } from "~/types/tv-seasons";
-import SeasonIndex from "~/components/Seasons/index.vue";
+import EpisodeCardIndex from "~/components/Seasons/Episode/index.vue";
 
 @Component({
-  name: "SeasonPage",
-  components: { SeasonIndex },
+  name: "SeasonNumberPage",
+  components: { EpisodeCardIndex },
   async asyncData({
     $axios,
     params
@@ -21,7 +21,7 @@ import SeasonIndex from "~/components/Seasons/index.vue";
     return { seasons };
   }
 })
-export default class SeasonPage extends Vue {}
+export default class SeasonNumberPage extends Vue {}
 </script>
 
 <style scoped></style>

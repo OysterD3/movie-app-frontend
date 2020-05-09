@@ -24,14 +24,15 @@ import LatestList from "~/components/Homepage/LatestList.vue";
   }
 })
 export default class HomepageIndex extends Vue {
-  images: { link: string; id: number }[] = [];
+  images: { link: string; id: number; title: string }[] = [];
 
   async mounted(): Promise<void> {
     this.images = (((await this.$axios.$get(
       `/discover/movie?api_key=${process.env.API_KEY}&sort_by=popularity.desc`
     )) as IDiscover).results as IDiscoverMovieResults[]).map((el) => ({
       link: `${BASE_URL}/w780${el.poster_path}`,
-      id: el.id
+      id: el.id,
+      title: el.title
     }));
   }
 }

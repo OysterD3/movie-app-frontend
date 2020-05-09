@@ -6,7 +6,14 @@
           :src="el.link"
           class="oys-border-radius"
           @click="$router.push({ name: 'movie-id', params: { id: el.id } })"
-        />
+          style="position: relative; cursor: pointer;"
+        >
+          <div class="oys-details-cast--act">
+            <div class="font-weight-bold subtitle-2 px-3 pt-3 text-center">
+              {{ el.title }}
+            </div>
+          </div>
+        </v-img>
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
@@ -21,6 +28,7 @@ import { Vue, Component, Prop } from "nuxt-property-decorator";
 })
 export default class Slider extends Vue {
   @Prop({ required: true, type: Array }) readonly images!: {
+    title: string;
     link: string;
     id: number;
   }[];

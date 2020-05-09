@@ -36,7 +36,8 @@ module.exports = {
    */
   plugins: [
     { src: "@/plugins/vue-awesome-swiper.ts", mode: "client" },
-    { src: "@/plugins/axios.ts" }
+    { src: "@/plugins/axios.ts" },
+    { src: "@/plugins/infinite.ts", mode: "client" }
   ],
   /*
    ** Nuxt.js dev-modules

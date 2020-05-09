@@ -12,6 +12,7 @@
             @mouseover="hoverCast(el.image)"
             @mouseleave="hoverCast('')"
             style="position: relative; cursor: pointer;"
+            @click="$router.push({ name: 'cast-id', params: { id: el.id } })"
           >
             <div class="oys-details-cast--act">
               <div class="font-weight-bold subtitle-2 px-3 pt-3">
@@ -55,13 +56,19 @@ export default class DetailsCast extends Vue {
     return image;
   }
 
-  get castProfilePic(): { image: string; name: string; character: string }[] {
+  get castProfilePic(): {
+    image: string;
+    name: string;
+    character: string;
+    id: number;
+  }[] {
     return this.cast
       .filter((el) => el.profile_path)
       .map((el) => ({
         image: `${SECURE_BASE_URL}/w185${el.profile_path}`,
         name: el.name,
-        character: el.character
+        character: el.character,
+        id: el.id
       }));
   }
 }

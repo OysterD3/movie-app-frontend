@@ -21,11 +21,11 @@
         <v-divider class="my-4" />
         <TvDetailsCurrentSeason :seasons="details.seasons" />
         <v-divider class="my-4" />
-        <DetailsSimilar :similar="details.similar" />
+        <DetailsSimilar :similar="details.similar" tv />
       </div>
       <div class="col-md-4 px-4 mb-4 col-12">
         <h4 class="display-1 mb-4">Recommendations</h4>
-        <div class="overflow-x-auto recommendation" style="max-height: 600px;">
+        <div class="overflow-x-auto recommendation" style="max-height: 800px;">
           <v-img
             eager
             v-for="el in recommendation"
@@ -33,7 +33,10 @@
             :src="el.image"
             contain
             class="oys-border-radius oys-shadow mb-4"
-            style="position: relative;"
+            style="position: relative; cursor: pointer;"
+            @click="
+              $router.push({ name: 'tv-id', params: { id: el.id.toString() } })
+            "
           >
             <div class="oys-details-cast--act">
               <div class="font-weight-bold subtitle-2 px-3 pt-3">

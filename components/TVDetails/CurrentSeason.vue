@@ -3,7 +3,14 @@
     <h4 class="display-1 mx-4 pt-4">
       Current season
 
-      <v-btn color="white" class="primary--text" depressed rounded small>
+      <v-btn
+        color="white"
+        class="primary--text"
+        depressed
+        rounded
+        small
+        :to="{ name: 'tv-id-season', params: { id: $route.params.id } }"
+      >
         View all seasons
       </v-btn>
     </h4>

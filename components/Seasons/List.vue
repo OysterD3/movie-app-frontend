@@ -45,7 +45,7 @@ import SeasonCard from "~/components/Seasons/Card.vue";
   components: { SeasonCard }
 })
 export default class SeasonList extends Vue {
-  @Prop(Array) readonly season!: ITvDetails;
+  @Prop(Object) readonly season!: ITvDetails;
 
   get poster(): string | null {
     return this.season.poster_path

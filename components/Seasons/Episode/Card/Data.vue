@@ -10,7 +10,7 @@
     <v-col cols>
       <div class="title">Guest Stars</div>
       <v-row>
-        <v-col cols="6" v-for="el in formattedGuestStars">
+        <v-col cols="6" v-for="el in formattedGuestStars" :key="el.image">
           <v-card class="transparent d-flex no-gutters" flat>
             <v-col cols="2">
               <v-img

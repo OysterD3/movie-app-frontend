@@ -66,8 +66,9 @@ import { IGenres } from "~/types/genres.interface";
 import { MOVIE_GENRES, TV_GENRES } from "~/constants/genres.constant";
 import moment from "moment";
 import {
-  IDiscoverMovie,
-  IDiscoverResults
+  IDiscover,
+  IDiscoverMovieResults,
+  IDiscoverTvResults
 } from "~/types/discover-movie.interface";
 import { BASE_URL } from "~/constants/tmdb-image.constant";
 
@@ -78,7 +79,7 @@ export default class LatestList extends Vue {
   @Prop({ type: String, default: "Latest" }) readonly heading!: string;
   @Prop({ type: Boolean, default: false }) readonly tv!: boolean;
   @Prop({ type: String, default: undefined }) readonly genresFilter!: string;
-  data: IDiscoverResults[] = [];
+  data: IDiscoverMovieResults[] | IDiscoverTvResults[] = [];
 
   async mounted(): Promise<void> {
     const queryParameters = `api_key=${
@@ -88,9 +89,9 @@ export default class LatestList extends Vue {
     }.lte=${moment().utcOffset(8).format("YYYY-MM-DD")}`;
 
     if (this.tv) {
-      this.data = ((await this.$axios.$get(
+      this.data = (((await this.$axios.$get(
         `/discover/tv?${queryParameters}`
-      )) as IDiscoverMovie).results
+      )) as IDiscover).results as IDiscoverTvResults[])
         .slice(0, 12)
         .map((el) => {
           el.poster_path = el.poster_path
@@ -99,9 +100,9 @@ export default class LatestList extends Vue {
           return el;
         });
     } else {
-      this.data = ((await this.$axios.$get(
+      this.data = (((await this.$axios.$get(
         `/discover/movie?${queryParameters}`
-      )) as IDiscoverMovie).results
+      )) as IDiscover).results as IDiscoverMovieResults[])
         .slice(0, 12)
         .map((el) => {
           el.poster_path = el.poster_path

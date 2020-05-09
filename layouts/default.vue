@@ -2,6 +2,15 @@
   <v-app id="oyster-app">
     <Snackbar />
     <v-content>
+      <v-app-bar class="transparent" flat>
+        <v-btn text dark @click="$router.push({ name: 'index' })">Home</v-btn>
+        <v-btn text dark @click="$router.push({ name: 'movie' })">
+          Movies
+        </v-btn>
+        <v-btn text dark @click="$router.push({ name: 'tv' })">
+          TV Shows
+        </v-btn>
+      </v-app-bar>
       <nuxt />
     </v-content>
     <v-divider class="mt-3" />

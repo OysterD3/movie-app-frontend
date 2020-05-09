@@ -1,5 +1,5 @@
 <template>
-  <div class="oys-details-cast">
+  <div :class="{ 'oys-details-cast': !tv }">
     <h4 class="display-1 mx-4 pt-4">Casts</h4>
     <swiper class="swiper pa-4 pr-7" :options="swiperOption">
       <swiper-slide v-for="el in castProfilePic" :key="el.image">
@@ -36,6 +36,7 @@ import { SECURE_BASE_URL } from "~/constants/tmdb-image.constant";
 })
 export default class DetailsCast extends Vue {
   @Prop(Array) readonly cast!: ICast[];
+  @Prop({ type: Boolean, default: false }) readonly tv!: boolean;
 
   swiperOption = {
     slidesPerView: 4,

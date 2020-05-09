@@ -1,5 +1,5 @@
 <template>
-  <DiscoverIndex :discover="discover" />
+  <DiscoverIndex :discover.sync="discover" />
 </template>
 
 <script lang="ts">
@@ -15,13 +15,21 @@ import DiscoverIndex from "~/components/Discover/index.vue";
 @Component({
   name: "MoviePage",
   components: { DiscoverIndex },
+  watchQuery: true,
   async asyncData({
-    $axios
+    $axios,
+    query
   }: Context): Promise<{
     discover: IDiscoverTvResults[] | IDiscoverMovieResults[];
   }> {
+    const queryParams = Object.entries(query)
+      .map(([key, value]) => `${key}=${value}`)
+      .filter((el) => !el.includes("undefined"))
+      .join("&");
     const discover = ((await $axios.$get(
-      `/discover/movie?api_key=${process.env.API_KEY}`
+      `/discover/movie?api_key=${process.env.API_KEY}${
+        queryParams.length > 0 ? `&${queryParams}` : ""
+      }`
     )) as IDiscover).results;
     return { discover };
   }

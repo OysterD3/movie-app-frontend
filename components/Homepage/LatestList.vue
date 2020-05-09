@@ -7,7 +7,7 @@
     </div>
     <div class="text-right mb-3">
       <ul class="oys-genres-tab">
-        <li v-for="(el, idx) in genres">
+        <li v-for="(el, idx) in genres" :key="el.id">
           <div class="d-inline-block">{{ el.name }}</div>
           <span class="oys-genres-tab-splitter"></span>
         </li>

@@ -1,4 +1,4 @@
 import Vue from "vue";
-import VueInfiniteLoading from "vue-infinite-loading";
+import InfiniteLoading from "vue-infinite-loading";
 
-Vue.use(VueInfiniteLoading);
+Vue.use(InfiniteLoading);

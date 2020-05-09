@@ -30,7 +30,13 @@
             :src="el.image"
             contain
             class="oys-border-radius oys-shadow mb-4"
-            style="position: relative;"
+            style="position: relative; cursor: pointer;"
+            @click="
+              $router.push({
+                name: 'movie-id',
+                params: { id: el.id.toString() }
+              })
+            "
           >
             <div class="oys-details-cast--act">
               <div class="font-weight-bold subtitle-2 px-3 pt-3">

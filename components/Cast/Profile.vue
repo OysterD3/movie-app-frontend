@@ -5,6 +5,12 @@
   >
     <v-img :src="photo" v-if="photo" style="border-radius: 20px 20px 0 0;" />
     <div class="pa-4">
+      <h3
+        class="display-1 text-center pb-3 font-weight-bold"
+        v-if="$device.isMobile"
+      >
+        {{ name }}
+      </h3>
       <div class="headline font-weight-bold">Personal Info</div>
       <PersonalInfo title="Known For" first>
         {{ department }}
@@ -38,6 +44,7 @@ export default class Profile extends Vue {
   @Prop(String) readonly birth!: string;
   @Prop(Array) readonly aka!: string[];
   @Prop(Number) readonly gender!: number;
+  @Prop(String) readonly name!: string;
 
   get photo(): string | null {
     return this.profilePicture

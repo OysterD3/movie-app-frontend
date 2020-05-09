@@ -4,11 +4,13 @@
     class="mx-10 oys-border-radius"
   >
     <v-row no-gutters>
-      <v-col cols="2" v-if="still">
+      <v-col cols="12" md="2" v-if="still">
         <v-img
           class="d-block"
           :src="still"
-          style="border-radius: 20px 0 0 0;"
+          :style="{
+            borderRadius: $device.isMobile ? '20px 20px 0 0' : '20px 0 0 0'
+          }"
           height="100%"
         />
       </v-col>
@@ -28,7 +30,7 @@
         <div class="title">
           {{ name }}
         </div>
-        <p class="subtitle-2">
+        <p class="subtitle-2 font-weight-regular">
           {{ overview }}
         </p>
       </v-col>
@@ -44,7 +46,7 @@
       </div>
     </v-card-actions>
     <v-card-actions
-      class="d-flex justify-center"
+      class="justify-md-center"
       style="border-top: 1px solid #7f828b;"
       v-else
     >

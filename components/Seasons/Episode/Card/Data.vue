@@ -1,18 +1,23 @@
 <template>
   <v-row dense>
-    <v-col cols="4" v-if="formattedCrew">
+    <v-col cols="12" md="4" v-if="formattedCrew">
       <div class="title">Crew</div>
       <div v-for="el in Object.keys(formattedCrew)">
         <span class="font-weight-bold">{{ el }}:</span>
         <span>{{ formattedCrew[el].map((i) => i.name).join(", ") }}</span>
       </div>
     </v-col>
-    <v-col cols>
+    <v-col cols="12" md>
       <div class="title">Guest Stars</div>
       <v-row>
-        <v-col cols="6" v-for="el in formattedGuestStars" :key="el.image">
+        <v-col
+          cols="12"
+          md="6"
+          v-for="el in formattedGuestStars"
+          :key="el.image"
+        >
           <v-card class="transparent d-flex no-gutters" flat>
-            <v-col cols="2">
+            <v-col cols="4" md="2">
               <v-img
                 :src="el.image"
                 :aspect-ratio="1"
@@ -33,7 +38,7 @@
     <v-col cols="12">
       <div class="title">Media</div>
       <v-row dense v-if="formattedStill">
-        <v-col cols="2" v-for="el in formattedStill" :key="el">
+        <v-col cols="4" md="2" v-for="el in formattedStill" :key="el">
           <v-img :src="el" style="border-radius: 10px;" />
         </v-col>
       </v-row>

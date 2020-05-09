@@ -1,10 +1,7 @@
 <template>
   <div
     :style="{
-      backgroundImage: heroImage
-        ? `linear-gradient(to right, rgba(13, 21, 49, 1.00) 30%, rgba(39, 67, 158, 0.84) 100%), url(${heroImage})`
-        : undefined,
-      transition: 'background-image 0.2s ease-in-out'
+      backgroundImage
     }"
     :class="{ 'oys-details-background': heroImage }"
   >
@@ -15,17 +12,21 @@
       :videos="details.videos"
       :overview="details.overview"
     />
-    <div class="d-flex no-gutters">
-      <div class="col-md-8 col-12 oys-details-cast">
+    <v-row no-gutters>
+      <v-col cols="12" md="8" class="oys-details-cast">
         <DetailsCast tv :cast="details.credits.cast" />
         <v-divider class="my-4" />
         <TvDetailsCurrentSeason :seasons="details.seasons" />
         <v-divider class="my-4" />
         <DetailsSimilar :similar="details.similar" tv />
-      </div>
-      <div class="col-md-4 px-4 mb-4 col-12">
+      </v-col>
+      <v-col cols="12" md="4" class="px-4 mb-4">
         <h4 class="display-1 mb-4">Recommendations</h4>
-        <div class="overflow-x-auto recommendation" style="max-height: 800px;">
+        <div
+          class="overflow-x-auto recommendation"
+          style="max-height: 800px;"
+          v-if="!$device.isMobile"
+        >
           <v-img
             eager
             v-for="el in recommendation"
@@ -45,8 +46,31 @@
             </div>
           </v-img>
         </div>
-      </div>
-    </div>
+        <swiper class="swiper pa-4 pr-7" :options="swiperOption" v-else>
+          <swiper-slide v-for="el in recommendation" :key="el.id">
+            <v-img
+              eager
+              :src="el.image"
+              contain
+              class="oys-border-radius oys-shadow"
+              style="position: relative; cursor: pointer;"
+              @click="
+                $router.push({
+                  name: 'tv-id',
+                  params: { id: el.id.toString() }
+                })
+              "
+            >
+              <div class="oys-details-cast--act">
+                <div class="font-weight-bold subtitle-2 px-3 pt-3">
+                  {{ el.title }}
+                </div>
+              </div>
+            </v-img>
+          </swiper-slide>
+        </swiper>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -70,6 +94,15 @@ import TvDetailsCurrentSeason from "~/components/TVDetails/CurrentSeason.vue";
 })
 export default class TvDetailsIndex extends Vue {
   @Prop(Object) readonly details!: ITvDetails;
+  swiperOption = {
+    slidesPerView: (this.$nuxt as any).$device.isMobile ? 1 : 4,
+    spaceBetween: 30,
+    freeMode: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    }
+  };
 
   get heroImage(): string | null {
     return this.details.backdrop_path
@@ -87,6 +120,16 @@ export default class TvDetailsIndex extends Vue {
         name: el.name,
         image: `${SECURE_BASE_URL}/w780${el.backdrop_path}`
       }));
+  }
+
+  get backgroundImage(): string | undefined {
+    if ((this as any).$device.isMobile) {
+      return `linear-gradient(to bottom, rgba(13, 21, 49, 0.9) 30%, rgba(39, 67, 158, 0.84) 100%), url(${this.heroImage})`;
+    } else {
+      return this.heroImage
+        ? `linear-gradient(to right, rgba(13, 21, 49, 1.00) 30%, rgba(39, 67, 158, 0.84) 100%), url(${this.heroImage})`
+        : undefined;
+    }
   }
 }
 </script>

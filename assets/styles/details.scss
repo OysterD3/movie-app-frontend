@@ -5,6 +5,7 @@
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    background-position: center;
   }
 
   &-heading {
@@ -21,7 +22,6 @@
 
     h1 {
       line-height: 1.25;
-      font-size: 4.5rem;
     }
   }
 
@@ -40,6 +40,18 @@
 
     .swiper {
       position: relative;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .oys-details-heading {
+    width: 100%;
+    min-height: 65vh;
+
+    &--content {
+      left: 0;
+      padding: 0 20px;
     }
   }
 }

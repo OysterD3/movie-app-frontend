@@ -6,7 +6,18 @@
       </h3>
     </div>
     <div class="text-right mb-3">
-      <ul class="oys-genres-tab">
+      <div v-if="$device.isMobile">
+        <v-select
+          label="Genres"
+          outlined
+          hide-details
+          :items="genres"
+          item-text="name"
+          item-value="id"
+          @change="onGenresChanged"
+        />
+      </div>
+      <ul class="oys-genres-tab" v-else>
         <li v-for="(el, idx) in genres" :key="el.id">
           <div
             class="d-inline-block"
@@ -44,8 +55,9 @@
     </div>
     <v-row>
       <v-col
-        cols="2"
-        v-for="el in data"
+        cols="6"
+        md="2"
+        v-for="el in ($device.isMobile ? data.slice(0, 4) : data)"
         :key="el.id"
         @click="
           tv
@@ -141,6 +153,20 @@ export default class LatestList extends Vue {
 
   get genres(): IGenres[] {
     return this.tv ? TV_GENRES.slice(0, 7) : MOVIE_GENRES.slice(0, 7);
+  }
+
+  onGenresChanged(e: number): void {
+    if (this.tv) {
+      this.$router.push({
+        name: "tv",
+        query: { with_genres: e.toString() }
+      });
+    } else {
+      this.$router.push({
+        name: "movie",
+        query: { with_genres: e.toString() }
+      });
+    }
   }
 }
 </script>

@@ -39,7 +39,7 @@ export default class KnownFor extends Vue {
   @Prop(Array) readonly knownFor!: ICombinedCreditsCast[];
 
   swiperOption = {
-    slidesPerView: 4,
+    slidesPerView: (this.$nuxt as any).$device.isMobile ? 2 : 4,
     spaceBetween: 15,
     freeMode: true,
     pagination: {

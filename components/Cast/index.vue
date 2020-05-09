@@ -1,6 +1,6 @@
 <template>
   <v-row class="px-4">
-    <v-col cols="4">
+    <v-col cols="12" md="4">
       <Profile
         :profile-picture="cast.profile_path"
         :aka="cast.also_known_as"
@@ -8,14 +8,17 @@
         :birthday="cast.birthday"
         :gender="cast.gender"
         :department="cast.known_for_department"
+        :name="cast.name"
       />
     </v-col>
-    <v-col cols="8">
+    <v-col cols="12" md="8">
       <div
         class="oys-border-radius pa-4"
         style="background: rgba(255, 255, 255, 0.2);"
       >
-        <h3 class="display-1 pt-3 font-weight-bold">{{ cast.name }}</h3>
+        <h3 class="display-1 pt-3 font-weight-bold" v-if="!$device.isMobile">
+          {{ cast.name }}
+        </h3>
         <div class="headline mt-5">Biography</div>
         <p style="white-space: pre-line;" class="body-2">
           {{ cast.biography }}

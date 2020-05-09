@@ -2,11 +2,17 @@
   <div>
     <v-card height="200px" class="d-flex align-center transparent" flat>
       <v-row dense class="pl-6" align="center">
-        <v-col cols="1">
+        <v-col cols="3" md="1">
           <v-img :src="poster" v-if="poster" max-height="150px" contain />
         </v-col>
-        <v-col cols>
-          <h3 class="display-1 font-weight-bold">
+        <v-col cols="9" md="11">
+          <h3
+            :class="{
+              'display-1': !$device.isMobile,
+              headline: $device.isMobile,
+              'font-weight-bold': true
+            }"
+          >
             {{ season.name }}
             <span class="headline font-weight-regular">({{ year }})</span>
           </h3>

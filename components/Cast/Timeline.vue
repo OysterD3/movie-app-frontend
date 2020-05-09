@@ -12,6 +12,7 @@
           <div
             v-for="(i, idx) in casts[el]"
             :key="idx"
+            class="mb-3"
             @click="
               $router.push({
                 name: i.type === 'movie' ? 'movie-id' : 'tv-id',

@@ -21,17 +21,17 @@
           params: { id: $route.params.id, number: currentSeason.season_number }
         }"
         class="transparent mt-3 mx-4 oys-border-radius"
-        :elevation="hover ? 16 : 0"
+        :elevation="hover || $device.isMobile ? 16 : 0"
         style="cursor: pointer;"
       >
         <v-row no-gutters align="center">
-          <v-col cols="2">
+          <v-col md="2" v-if="!$device.isMobile">
             <v-img
               :src="formatPosterPath(currentSeason.poster_path)"
               class="oys-border-radius"
             />
           </v-col>
-          <v-col cols class="pa-4">
+          <v-col cols="12" md="10" class="pa-4">
             <div class="title">
               {{ currentSeason.name }}
             </div>

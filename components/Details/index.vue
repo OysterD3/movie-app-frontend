@@ -1,10 +1,7 @@
 <template>
   <div
     :style="{
-      backgroundImage: heroImage
-        ? `linear-gradient(to right, rgba(13, 21, 49, 1.00) 30%, rgba(39, 67, 158, 0.84) 100%), url(${heroImage})`
-        : undefined,
-      transition: 'background-image 0.2s ease-in-out'
+      backgroundImage
     }"
     :class="{ 'oys-details-background': heroImage }"
   >
@@ -15,14 +12,18 @@
       :release-date="details.release_date"
       :videos="details.videos"
     />
-    <div class="d-flex no-gutters">
-      <div class="col-md-8 col-12">
+    <v-row no-gutters>
+      <v-col md="8" cols="12">
         <DetailsCast :cast="details.credits.cast" @hover-cast="onHoverCast" />
         <DetailsSimilar :similar="details.similar" />
-      </div>
-      <div class="col-md-4 px-4 mb-4 col-12">
+      </v-col>
+      <v-col md="4" cols="12" class="px-4">
         <h4 class="display-1 mb-4">Recommendations</h4>
-        <div class="overflow-x-auto recommendation" style="max-height: 550px;">
+        <div
+          class="overflow-x-auto recommendation"
+          style="max-height: 550px;"
+          v-if="!$device.isMobile"
+        >
           <v-img
             eager
             v-for="el in recommendation"
@@ -45,8 +46,31 @@
             </div>
           </v-img>
         </div>
-      </div>
-    </div>
+        <swiper class="swiper pa-4 pr-7" :options="swiperOption">
+          <swiper-slide v-for="el in recommendation" :key="el.id">
+            <v-img
+              eager
+              :src="el.image"
+              contain
+              class="oys-border-radius oys-shadow"
+              style="position: relative; cursor: pointer;"
+              @click="
+                $router.push({
+                  name: 'movie-id',
+                  params: { id: el.id.toString() }
+                })
+              "
+            >
+              <div class="oys-details-cast--act">
+                <div class="font-weight-bold subtitle-2 px-3 pt-3">
+                  {{ el.title }}
+                </div>
+              </div>
+            </v-img>
+          </swiper-slide>
+        </swiper>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -65,6 +89,15 @@ import DetailsSimilar from "~/components/Details/Similar.vue";
 export default class DetailsIndex extends Vue {
   @Prop({ required: true, type: Object }) readonly details!: IMovieDetails;
   image = "";
+  swiperOption = {
+    slidesPerView: (this.$nuxt as any).$device.isMobile ? 1 : 4,
+    spaceBetween: 30,
+    freeMode: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    }
+  };
 
   get heroImage(): string | null {
     if (this.image === "")
@@ -76,6 +109,16 @@ export default class DetailsIndex extends Vue {
 
   onHoverCast(e: string): void {
     this.image = e.replace("w185", "h632");
+  }
+
+  get backgroundImage(): string | undefined {
+    if ((this as any).$device.isMobile) {
+      return `linear-gradient(to bottom, rgba(13, 21, 49, 0.8) 0%, rgba(39, 67, 158, 0.84) 100%), url(${this.heroImage})`;
+    } else {
+      return this.heroImage
+        ? `linear-gradient(to right, rgba(13, 21, 49, 1.00) 30%, rgba(39, 67, 158, 0.84) 100%), url(${this.heroImage})`
+        : undefined;
+    }
   }
 
   get poster(): string | null {

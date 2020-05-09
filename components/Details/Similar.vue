@@ -40,7 +40,7 @@ export default class DetailsSimilar extends Vue {
   @Prop({ type: Boolean, default: false }) readonly tv!: boolean;
 
   swiperOption = {
-    slidesPerView: 4,
+    slidesPerView: (this.$nuxt as any).$device.isMobile ? 1 : 4,
     spaceBetween: 30,
     freeMode: true,
     pagination: {

@@ -1,26 +1,23 @@
 <template>
   <div class="oys-details-heading text-left">
     <div class="oys-details-heading--content">
-      <h1>
+      <h1 :style="{ fontSize: $device.isMobile ? '2.5rem' : '4.5rem' }">
         {{ title }}
       </h1>
-      <div
-        class="d-flex justify-lg-space-between no-gutters"
-        style="width: 100%;"
-      >
-        <v-col cols class="text-center text-no-wrap">
+      <div style="width: 100%;" class="text-no-wrap">
+        <div class="d-inline-block text-center">
           {{ status }}
-        </v-col>
-        <v-col cols class="text-center text-no-wrap">
+        </div>
+        <div class="d-inline-block text-center px-2">
           |
-        </v-col>
-        <v-col cols class="text-center text-no-wrap">{{ runtime }}mins</v-col>
-        <v-col cols class="text-center text-no-wrap">
+        </div>
+        <div class="d-inline-block text-center">{{ runtime }}mins</div>
+        <div class="d-inline-block text-center px-2">
           |
-        </v-col>
-        <v-col cols class="text-center text-no-wrap">
+        </div>
+        <div class="d-inline-block text-center">
           {{ releaseDate }}
-        </v-col>
+        </div>
       </div>
       <div class="mt-12">
         <TrailerMenu :videos="videos" />

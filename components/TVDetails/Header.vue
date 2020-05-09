@@ -1,11 +1,17 @@
 <template>
   <div class="oys-details-heading text-left">
     <div class="oys-details-heading--content">
-      <h1>
+      <h1 :style="{ fontSize: $device.isMobile ? '2.5rem' : '4.5rem' }">
         {{ title }}
       </h1>
       <div class="subtitle-2 font-italic"></div>
-      <div class="title text-no-wrap">
+      <div
+        :class="{
+          title: !$device.isMobile,
+          'subtitle-2': $device.isMobile,
+          'text-no-wrap': true
+        }"
+      >
         <div class="d-inline-block">{{ formattedGenres }}</div>
         <div class="d-inline-block">
           <span v-if="formattedGenres">•</span>

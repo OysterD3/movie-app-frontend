@@ -7,7 +7,6 @@
           <v-img
             eager
             :src="el.image"
-            contain
             class="oys-border-radius oys-shadow"
             @mouseover="hoverCast(el.image)"
             @mouseleave="hoverCast('')"
@@ -42,8 +41,8 @@ export default class DetailsCast extends Vue {
   @Prop({ type: Boolean, default: false }) readonly tv!: boolean;
 
   swiperOption = {
-    slidesPerView: 4,
-    spaceBetween: 30,
+    slidesPerView: (this.$nuxt as any).$device.isMobile ? 2 : 4,
+    spaceBetween: 15,
     freeMode: true,
     pagination: {
       el: ".swiper-pagination",

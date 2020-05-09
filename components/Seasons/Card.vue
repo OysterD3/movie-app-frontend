@@ -7,8 +7,8 @@
       params: { id: $route.params.id, number: data.season_number }
     }"
   >
-    <v-row no-gutters align="center">
-      <v-col cols="1" v-if="poster">
+    <v-row no-gutters align="start" align-md="center">
+      <v-col cols="4" md="1" v-if="poster">
         <v-img
           class="d-block"
           :src="poster"
@@ -17,7 +17,7 @@
         />
       </v-col>
       <v-col cols class="pa-3">
-        <div class="d-flex no-gutters">
+        <div class="d-flex no-gutters" v-if="!$device.isMobile">
           <div class="col">
             <span class="font-weight-bold">{{ data.name }}</span>
             <span class="font-weight-bold">|</span>
@@ -29,7 +29,14 @@
             </span>
           </div>
         </div>
-        <p class="subtitle-2">
+        <div v-else>
+          <div class="title font-weight-bold">{{ data.name }}</div>
+          <div class="font-weight-medium">
+            {{ data.air_date }} | {{ data.episode_count }}
+            {{ data.episode_count !== 1 ? "episodes" : "episode" }}
+          </div>
+        </div>
+        <p class="subtitle-2 font-weight-regular">
           {{ data.overview }}
         </p>
       </v-col>

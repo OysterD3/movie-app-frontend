@@ -62,7 +62,7 @@ import { SECURE_BASE_URL } from "~/constants/tmdb-image.constant";
   name: "TvDetailsCurrentSeason"
 })
 export default class TvDetailsCurrentSeason extends Vue {
-  @Prop({ type: Array, default: () => [] }) readonly seasons: ISeasons[];
+  @Prop({ type: Array, default: () => [] }) readonly seasons!: ISeasons[];
 
   get currentSeason(): ISeasons {
     return this.seasons[this.seasons.length - 1];

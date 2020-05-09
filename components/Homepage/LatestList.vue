@@ -83,9 +83,9 @@ export default class LatestList extends Vue {
   async mounted(): Promise<void> {
     const queryParameters = `api_key=${
       process.env.API_KEY
-    }&region=US&sort_by=primary_release_date.desc&primary_release_date.lte=${moment()
-      .utcOffset(8)
-      .format("YYYY-MM-DD")}`;
+    }&with_original_language=en&region=US&sort_by=primary_release_date.desc&${
+      this.tv ? "first_air_date" : "primary_release_date"
+    }.lte=${moment().utcOffset(8).format("YYYY-MM-DD")}`;
 
     if (this.tv) {
       this.data = ((await this.$axios.$get(

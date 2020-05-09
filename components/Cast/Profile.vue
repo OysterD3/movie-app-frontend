@@ -45,7 +45,7 @@ export default class Profile extends Vue {
       : null;
   }
 
-  get formatGender(): string {
+  get formatGender(): string | undefined {
     if (this.gender === 0) return "Not Specified";
     if (this.gender === 1) return "Female";
     if (this.gender === 2) return "Male";

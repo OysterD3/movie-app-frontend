@@ -14,10 +14,10 @@ import SeasonList from "~/components/Seasons/List.vue";
   async asyncData({
     $axios,
     params
-  }: Context): Promise<{ seasons: ITvSeasons }> {
-    const season = await $axios.$get(
+  }: Context): Promise<{ season: ITvSeasons }> {
+    const season = (await $axios.$get(
       `/tv/${params.id}?api_key=${process.env.API_KEY}`
-    );
+    )) as ITvSeasons;
     return { season };
   }
 })

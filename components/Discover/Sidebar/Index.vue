@@ -5,10 +5,10 @@
     class="oys-border-radius mt-6 mr-5"
   >
     <v-card-text class="white--text">
-      <SortBy />
+      <SortBy :tv="tv" />
       <v-divider class="my-4" />
-      <Genres :genres.sync="genres" />
-      <ReleaseDates :fromDate.sync="fromDate" :to-date.sync="toDate" />
+      <Genres :tv="tv" :genres.sync="genres" />
+      <ReleaseDates :tv="tv" :fromDate.sync="fromDate" :to-date.sync="toDate" />
     </v-card-text>
     <v-card-actions>
       <v-btn

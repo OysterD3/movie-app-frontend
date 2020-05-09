@@ -2,7 +2,7 @@
   <div>
     <v-row no-gutters class="px-4">
       <v-col cols="3">
-        <DiscoverSidebar />
+        <DiscoverSidebar :tv="tv" />
       </v-col>
       <v-col cols="9">
         <v-row>
@@ -41,6 +41,7 @@ export default class DiscoverIndex extends Vue {
   @PropSync("discover") discoverSynced!:
     | IDiscoverMovieResults[]
     | IDiscoverTvResults[];
+  @Prop({ type: Boolean, default: false }) readonly tv!: boolean;
   page = 1;
 
   @Watch("$route.query")

@@ -8,11 +8,37 @@
     <div class="text-right mb-3">
       <ul class="oys-genres-tab">
         <li v-for="(el, idx) in genres" :key="el.id">
-          <div class="d-inline-block">{{ el.name }}</div>
+          <div
+            class="d-inline-block"
+            style="cursor: pointer;"
+            @click="
+              tv
+                ? $router.push({
+                    name: 'tv',
+                    query: { with_genres: el.id.toString() }
+                  })
+                : $router.push({
+                    name: 'movie',
+                    query: { with_genres: el.id.toString() }
+                  })
+            "
+          >
+            {{ el.name }}
+          </div>
           <span class="oys-genres-tab-splitter"></span>
         </li>
         <li>
-          <div class="d-inline-block">See more >></div>
+          <div
+            class="d-inline-block"
+            @click="
+              tv
+                ? $router.push({ name: 'tv' })
+                : $router.push({ name: 'movie' })
+            "
+            style="cursor: pointer;"
+          >
+            See more >>
+          </div>
         </li>
       </ul>
     </div>

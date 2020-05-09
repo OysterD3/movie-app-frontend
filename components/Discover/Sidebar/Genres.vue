@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { Component, PropSync, Vue } from "nuxt-property-decorator";
+import { Component, Prop, PropSync, Vue } from "nuxt-property-decorator";
 import { MOVIE_GENRES, TV_GENRES } from "~/constants/genres.constant";
 
 @Component({
@@ -24,9 +24,10 @@ import { MOVIE_GENRES, TV_GENRES } from "~/constants/genres.constant";
 })
 export default class Genres extends Vue {
   @PropSync("genres") genresSynced!: string[];
+  @Prop({ type: Boolean, default: false }) readonly tv!: boolean;
 
   get allGenres(): { id: number; name: string }[] {
-    return this.$route.name?.includes("movie") ? MOVIE_GENRES : TV_GENRES;
+    return !this.tv ? MOVIE_GENRES : TV_GENRES;
   }
 }
 </script>
